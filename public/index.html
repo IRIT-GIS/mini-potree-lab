@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Potree Lab</title>
+  <link rel="stylesheet" href="/potree/build/potree/potree.css">
+  <link rel="stylesheet" href="/potree/libs/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="/potree/libs/openlayers3/ol.css">
+  <link rel="stylesheet" href="/potree/libs/spectrum/spectrum.css">
+  <link rel="stylesheet" href="/potree/libs/jstree/themes/mixed/style.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="app-shell">
+    <header class="topbar">
+      <div>
+        <strong>Mini Potree Lab</strong>
+      </div>
+      <div class="top-actions">
+        <button id="demoBtn" type="button">Открыть демо</button>
+        <button id="resetBtn" type="button">Сбросить</button>
+      </div>
+    </header>
+
+    <section id="dropZone" class="drop-zone" aria-label="Загрузка облака точек">
+      <input id="fileInput" type="file" accept=".las,.laz" hidden>
+      <div class="drop-inner">
+        <div class="drop-title">Перетащите сюда LAS/LAZ</div>
+        <div class="drop-hint">или нажмите, чтобы выбрать файл</div>
+        <div id="modeBadge" class="mode-badge" hidden></div>
+      </div>
+    </section>
+
+    <section class="status-panel">
+      <div id="status">Проверяю окружение…</div>
+      <progress id="progress" max="100" value="0" hidden></progress>
+      <div id="details" class="details"></div>
+    </section>
+
+    <main class="viewer-wrap">
+      <div class="potree_container">
+        <div id="potree_render_area"></div>
+        <div id="potree_sidebar_container"></div>
+      </div>
+
+      <aside id="debugPanel" class="debug-panel" hidden aria-label="Журнал обработки">
+        <div class="debug-head">
+          <div>
+            <strong>Журнал обработки</strong>
+            <div class="debug-subtitle">browser → Node → PotreeConverter → Potree</div>
+          </div>
+          <div class="debug-actions">
+            <button id="debugClearBtn" type="button">Очистить</button>
+            <button id="debugCollapseBtn" type="button" aria-expanded="true">Свернуть</button>
+          </div>
+        </div>
+        <div id="debugLog" class="debug-log" aria-live="polite"></div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/potree/libs/jquery/jquery-3.1.1.min.js"></script>
+  <script src="/potree/libs/spectrum/spectrum.js"></script>
+  <script src="/potree/libs/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/potree/libs/other/BinaryHeap.js"></script>
+  <script src="/potree/libs/tween/tween.min.js"></script>
+  <script src="/potree/libs/d3/d3.js"></script>
+  <script src="/potree/libs/proj4/proj4.js"></script>
+  <script src="/potree/libs/openlayers3/ol.js"></script>
+  <script src="/potree/libs/i18next/i18next.js"></script>
+  <script src="/potree/libs/jstree/jstree.js"></script>
+  <script src="/potree/build/potree/potree.js"></script>
+  <script src="/potree/libs/plasio/js/laslaz.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

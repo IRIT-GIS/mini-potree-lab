@@ -1,0 +1,164 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  font-family: system-ui, sans-serif;
+  background: #111;
+  color: #eee;
+  overflow: hidden;
+}
+
+#app-shell {
+  display: grid;
+  grid-template-rows: auto auto auto minmax(320px, 1fr);
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #1b1b1b;
+  border-bottom: 1px solid #333;
+}
+
+.subtitle { margin-left: 10px; color: #aaa; font-size: 0.9rem; }
+.top-actions { display: flex; gap: 8px; }
+button { padding: 7px 11px; cursor: pointer; }
+
+.drop-zone {
+  margin: 10px 12px 0;
+  border: 2px dashed #666;
+  border-radius: 10px;
+  min-height: 84px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #171717;
+}
+.drop-zone.dragover { border-color: #ddd; background: #222; }
+.drop-inner { text-align: center; padding: 14px; }
+.drop-title { font-weight: 650; }
+.drop-hint { color: #aaa; font-size: .9rem; margin-top: 4px; }
+.mode-badge {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 3px 8px;
+  background: #3a2d12;
+  border: 1px solid #755b21;
+  border-radius: 999px;
+  font-size: .8rem;
+}
+
+.status-panel { padding: 8px 14px; min-height: 44px; background: #151515; }
+#status { font-size: .95rem; }
+#progress { width: min(520px, 100%); margin-top: 6px; }
+.details { color: #999; font-size: .82rem; margin-top: 4px; white-space: pre-wrap; }
+
+.viewer-wrap {
+  position: relative;
+  min-width: 0;
+  min-height: 775px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.potree_container {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+#potree_render_area {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+#potree_sidebar_container { position: absolute; }
+
+.debug-panel {
+  position: absolute;
+  z-index: 10020;
+  top: 12px;
+  right: 12px;
+  width: min(520px, calc(100% - 24px));
+  max-height: min(52%, 440px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 18, 18, .94);
+  border: 1px solid #555;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .4);
+}
+
+.debug-panel[hidden] { display: none; }
+
+.debug-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 10px;
+  border-bottom: 1px solid #444;
+  background: rgba(28, 28, 28, .98);
+}
+
+.debug-subtitle { margin-top: 2px; color: #aaa; font-size: .76rem; }
+.debug-actions { display: flex; gap: 6px; }
+.debug-actions button { padding: 4px 7px; font-size: .76rem; }
+
+.debug-log {
+  overflow: auto;
+  padding: 6px 0 8px;
+  min-height: 110px;
+}
+
+.debug-panel.collapsed .debug-log { display: none; }
+.debug-panel.collapsed { max-height: none; }
+
+.debug-row {
+  display: grid;
+  grid-template-columns: 64px 82px 1fr;
+  gap: 6px;
+  align-items: start;
+  padding: 4px 9px;
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  font: 12px/1.35 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+.debug-time { color: #8f8f8f; }
+.debug-source { font-weight: 700; }
+.debug-message { min-width: 0; overflow-wrap: anywhere; }
+.debug-browser .debug-source { color: #7db4ff; }
+.debug-server .debug-source { color: #f3c969; }
+.debug-converter .debug-source { color: #88d498; }
+.debug-potree .debug-source { color: #cf9cff; }
+.debug-error .debug-message { color: #ff9b9b; }
+
+@media (max-width: 700px) {
+  html, body { overflow: auto; }
+  #app-shell { min-height: 100%; height: auto; grid-template-rows: auto auto auto minmax(420px, 1fr); }
+  .subtitle { display: none; }
+  .topbar { align-items: flex-start; }
+  .viewer-wrap { height: 520px; }
+  .debug-panel { top: 8px; right: 8px; width: calc(100% - 16px); max-height: 55%; }
+  .debug-row { grid-template-columns: 58px 70px 1fr; font-size: 11px; }
+}
