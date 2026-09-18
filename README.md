@@ -1,6 +1,6 @@
-# Mini Potree Lab
+Mini Potree Lab
 
-Учебный визуализатор облаков точек Potree WebGL viewer
+Учебный визуализатор облака точек на базе Potree.
 
 Для запуска необходимо установить:
 - Git
@@ -8,8 +8,10 @@
 - Potree
 - PotreeConverter
 
+Важно для Windows — желательно использовать пути без кириллицы
+
 Potree: https://github.com/potree/potree.git
-Рядом с этим проектом можно клонировать Potree:
+В каталоге проекта клонировать Potree:
 
 ```bash
 git clone https://github.com/potree/potree.git vendor/potree
@@ -17,33 +19,35 @@ cd vendor/potree
 npm install
 ```
 
-Перед первым использованием должен существовать файл:
+После сборки должен существовать файл:
 
 `vendor/potree/build/potree/potree.js`
 
-PotreeConverter: https://github.com/potree/PotreeConverter/releases?utm_source=chatgpt.com#release-2.1.3
+PotreeConverter: https://github.com/potree/PotreeConverter
+
+Скачать Windows-версию и распаковать в
+
+`vendor/PotreeConverter/`
 
 Для Windows ожидаемый путь по умолчанию:
 
 `vendor/PotreeConverter/PotreeConverter.exe`
 
-Если bin лежит в другом месте, задайте переменную среды `POTREE_CONVERTER`.
-
-Пример PowerShell:
+Если PotreeConverter лежит в другом месте
 
 ```powershell
 $env:POTREE_CONVERTER="C:\Tools\PotreeConverter\PotreeConverter.exe"
 ```
 
-Если сам Potree находится не в `vendor/potree`:
+Если Potree находится не в `vendor/potree`:
 
 ```powershell
 $env:POTREE_DIR="C:\Tools\potree"
 ```
 
-Зависимости:
+Запуск Mini Potree Lab
 
-В каталоге `mini-potree-lab`:
+В каталоге проекта `mini-potree-lab`:
 
 ```bash
 npm install
@@ -54,15 +58,15 @@ npm start
 
 `http://localhost:3000`
 
-Принцип работы:
-1. Пользователь перетаскивает `.las` или `.laz` в drop-область.
-2. Браузер отправляет файл на локальный Node-сервер.
-3. Node запускает PotreeConverter.
-4. Converter создаёт `metadata.json` и многомасштабные данные Potree.
-5. Сервер раздаёт полученный каталог по HTTP.
-6. Potree загружает `metadata.json` и визуализирует облако.
+Проверка конфигурации
 
-Для быстрой проверки без своего LAS/LAZ нажмите «Открыть демо» — используется публичное демонстрационное облако Potree.
+`http://localhost:3000/api/health`
+
+Должно быть
+```
+potreeFound: true
+converterFound: true
+```
 
 Ломаем систему через добавление параметра к URL:
 
@@ -73,5 +77,6 @@ npm start
 - `http://localhost:3000/?break=no-fit` 
 
 Тестовые облака:
-- кролик - в дереве проекта
+- кролик - samples/stanford_bunny.las
+- тестовая сцена - samples/autzen.laz
 - промзона - https://disk.yandex.ru/d/YF8MW-HqyHKRDw
