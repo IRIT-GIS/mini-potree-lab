@@ -21,7 +21,7 @@ npm install
 
 `vendor/potree/build/potree/potree.js`
 
-PotreeConverter: https://github.com/potree/PotreeConverter
+PotreeConverter: https://github.com/potree/PotreeConverter/releases?utm_source=chatgpt.com#release-2.1.3
 
 Для Windows ожидаемый путь по умолчанию:
 
@@ -41,7 +41,7 @@ $env:POTREE_CONVERTER="C:\Tools\PotreeConverter\PotreeConverter.exe"
 $env:POTREE_DIR="C:\Tools\potree"
 ```
 
-Запуск:
+Зависимости:
 
 В каталоге `mini-potree-lab`:
 
@@ -50,7 +50,7 @@ npm install
 npm start
 ```
 
-Приложение доступно по ссылке:
+Открыть:
 
 `http://localhost:3000`
 
