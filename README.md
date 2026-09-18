@@ -21,7 +21,7 @@ npm install
 
 `vendor/potree/build/potree/potree.js`
 
-PotreeConverter: https://github.com/potree/PotreeConverter/releases?utm_source=chatgpt.com#release-2.1.3
+PotreeConverter: https://github.com/potree/PotreeConverter
 
 Для Windows ожидаемый путь по умолчанию:
 
