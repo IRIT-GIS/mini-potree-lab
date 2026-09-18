@@ -41,7 +41,7 @@ $env:POTREE_CONVERTER="C:\Tools\PotreeConverter\PotreeConverter.exe"
 $env:POTREE_DIR="C:\Tools\potree"
 ```
 
-Зависимости:
+Запуск:
 
 В каталоге `mini-potree-lab`:
 
@@ -50,7 +50,7 @@ npm install
 npm start
 ```
 
-Открыть:
+Приложение доступно по ссылке:
 
 `http://localhost:3000`
 
